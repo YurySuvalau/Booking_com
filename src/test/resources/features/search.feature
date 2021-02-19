@@ -10,4 +10,4 @@ Feature: Search on Booking.com
     Given User is looking for 'Брест' city
     When User does search
     Then Hotel 'Отель ЭРМИТАЖ' should be on the first page
-    And Rating of the hotel 'Отель ЭРМИТАЖ' is '9,3'
+    And Rating of the hotel 'Отель ЭРМИТАЖ' is '9,4'

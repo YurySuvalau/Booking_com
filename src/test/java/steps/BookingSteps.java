@@ -11,6 +11,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -53,6 +54,8 @@ public class BookingSteps {
 
     @And("Rating of the hotel {string} is {string}")
     public void ratingOfTheHotel(String hotel, String rating) {
-        assertThat($$(By.xpath(String.format("//*[contains(@class,'sr-hotel__name')and contains(text(),'%s')]/ancestor::*[contains(@class,'sr_item_content_slider_wrapper')]//*[@class = 'bui-review-score__badge']", hotel))).texts(), hasItem(rating));
+        Assert.assertEquals($(By.xpath(String.format("//*[contains(@class,'sr-hotel__name')and contains(text(),'%s')]" +
+                "/ancestor::*[contains(@class,'sr_item_content_slider_wrapper')]" +
+                "//*[@class = 'bui-review-score__badge']", hotel))).getText(), rating);
     }
 }
